@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>การประเมิน PA OPD MED — หน้าทดลองเข้าสู่ระบบ (Demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="demo-banner">
+    🧪 หน้านี้คือตัวอย่างหน้าเข้าสู่ระบบสำหรับนำเสนอ — กรอกอะไรก็ได้แล้วกด "เข้าสู่ระบบ" เพื่อเข้าสู่หน้าทดลองใช้งานจริง (ไม่เชื่อมต่อระบบจริง)
+  </div>
+
+  <!-- หน้าเข้าสู่ระบบ (หน้าตาเหมือน index.html ของจริงทุกอย่าง) -->
+  <main class="login-view">
+    <div class="login-bg-blob blob-1"></div>
+    <div class="login-bg-blob blob-2"></div>
+
+    <div class="login-card">
+      <div class="login-brand">
+        <div class="brand-mark">PA</div>
+        <div>
+          <h1 class="brand-title">การประเมิน PA OPD MED</h1>
+          <p class="brand-subtitle">Performance Agreement Platform</p>
+        </div>
+      </div>
+
+      <p class="login-tabs-hint">ขั้นตอนที่ 1: เลือกวิธีเข้าสู่ระบบของคุณก่อน</p>
+      <div class="login-tabs">
+        <button class="tab active" data-tab="password" type="button">ผู้ดูแล / หัวหน้าหน่วย</button>
+        <button class="tab" data-tab="code" type="button">รหัสเฉพาะรอบ</button>
+      </div>
+
+      <p class="login-tab-desc" id="loginTabDescPassword">ขั้นตอนที่ 2: กรอกชื่อผู้ใช้และรหัสผ่านของคุณ (ตัวอย่างนี้กรอกอะไรก็ได้)</p>
+      <form id="formLoginPassword" class="login-form">
+        <label>ชื่อผู้ใช้
+          <input type="text" id="loginUsername" autocomplete="username" placeholder="username" required />
+        </label>
+        <label>รหัสผ่าน
+          <input type="password" id="loginPassword" autocomplete="current-password" placeholder="••••••••" required />
+        </label>
+        <button type="submit" class="btn-primary btn-block">เข้าสู่ระบบ</button>
+      </form>
+
+      <p class="login-tab-desc" id="loginTabDescCode" hidden>ขั้นตอนที่ 2: กรอกรหัสเฉพาะรอบที่ได้รับจากผู้ดูแลระบบ (ตัวอย่างนี้กรอกอะไรก็ได้)</p>
+      <form id="formLoginCode" class="login-form" hidden>
+        <label>รหัสเฉพาะรอบการประเมิน
+          <input type="text" id="loginCode" placeholder="เช่น A1B2C3D4" required />
+        </label>
+        <button type="submit" class="btn-primary btn-block">เข้าสู่ระบบ</button>
+      </form>
+
+      <p class="login-error" id="loginError" hidden></p>
+
+      <p class="muted" style="text-align:center; margin-top:1.25rem; font-size:0.8rem;">
+        หน้านี้เป็นตัวอย่างเท่านั้น ไม่ได้เชื่อมต่อระบบจริง
+      </p>
+    </div>
+  </main>
+
+  <script>
+    // จำลองการเข้าสู่ระบบ: ไม่ตรวจสอบข้อมูลจริง กรอกอะไรก็ได้ที่ไม่ว่าง แล้วพาไปหน้าทดลองใช้งานทันที
+    (function () {
+      var tabs = document.querySelectorAll('.login-tabs .tab');
+      var formPassword = document.getElementById('formLoginPassword');
+      var formCode = document.getElementById('formLoginCode');
+      var descPassword = document.getElementById('loginTabDescPassword');
+      var descCode = document.getElementById('loginTabDescCode');
+      var loginError = document.getElementById('loginError');
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          var isPassword = tab.dataset.tab === 'password';
+          formPassword.hidden = !isPassword;
+          formCode.hidden = isPassword;
+          descPassword.hidden = !isPassword;
+          descCode.hidden = isPassword;
+          loginError.hidden = true;
+        });
+      });
+
+      function goToDemo(button) {
+        var originalText = button.textContent;
+        button.textContent = 'กำลังเข้าสู่ระบบ...';
+        button.disabled = true;
+        setTimeout(function () {
+          window.location.href = 'demo.html';
+        }, 500);
+      }
+
+      formPassword.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var username = document.getElementById('loginUsername').value.trim();
+        var password = document.getElementById('loginPassword').value;
+        if (!username || !password) {
+          loginError.textContent = 'กรุณากรอกชื่อผู้ใช้และรหัสผ่าน (ใส่ค่าอะไรก็ได้สำหรับตัวอย่างนี้)';
+          loginError.hidden = false;
+          return;
+        }
+        loginError.hidden = true;
+        goToDemo(e.submitter || formPassword.querySelector('button[type="submit"]'));
+      });
+
+      formCode.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var code = document.getElementById('loginCode').value.trim();
+        if (!code) {
+          loginError.textContent = 'กรุณากรอกรหัสเฉพาะรอบ (ใส่ค่าอะไรก็ได้สำหรับตัวอย่างนี้)';
+          loginError.hidden = false;
+          return;
+        }
+        loginError.hidden = true;
+        goToDemo(e.submitter || formCode.querySelector('button[type="submit"]'));
+      });
+    })();
+  </script>
+</body>
+</html>
