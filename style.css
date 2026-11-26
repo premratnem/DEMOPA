@@ -1,0 +1,535 @@
+/* =========================================================
+   PA Platform — Modern SaaS / Bento Grid Design System
+   Typography: Sarabun | Accent: Indigo/Tech Blue gradient
+   ========================================================= */
+
+:root {
+  --font-main: "Sarabun", "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+
+  --color-bg: #f8fafc;
+  --color-card: #ffffff;
+  --color-border: #e5e9f0;
+  --color-border-soft: #eef1f6;
+
+  --color-text: #1e2433;
+  --color-text-strong: #0f172a;
+  --color-muted: #6b7280;
+  --color-muted-soft: #94a3b8;
+
+  --color-indigo: #6366f1;
+  --color-blue: #3b82f6;
+  --color-indigo-soft: #eef0ff;
+  --color-indigo-text: #4338ca;
+
+  --color-success: #16a34a;
+  --color-success-soft: #dcfce7;
+  --color-danger: #e11d48;
+  --color-danger-soft: #ffe4e8;
+  --color-warning: #d97706;
+  --color-warning-soft: #fef3c7;
+
+  --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+
+  --radius-lg: 14px;
+  --radius-md: 12px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 2px 6px -2px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 4px 8px -4px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 20px 40px -12px rgba(15, 23, 42, 0.12), 0 8px 16px -8px rgba(15, 23, 42, 0.06);
+  --shadow-glow: 0 8px 20px -4px rgba(99, 102, 241, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 { color: var(--color-text-strong); font-weight: 700; letter-spacing: -0.01em; }
+
+/* ---------------------------------------------------------
+   Login view
+   --------------------------------------------------------- */
+
+.login-view {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.login-bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+  z-index: 0;
+}
+.blob-1 {
+  width: 420px; height: 420px;
+  background: var(--gradient-accent);
+  top: -120px; left: -120px;
+}
+.blob-2 {
+  width: 360px; height: 360px;
+  background: var(--gradient-accent);
+  bottom: -140px; right: -100px;
+  opacity: 0.25;
+}
+
+.login-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.login-brand { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.75rem; }
+
+.brand-mark {
+  width: 46px; height: 46px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-accent);
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 1rem;
+  box-shadow: var(--shadow-glow);
+  flex-shrink: 0;
+}
+.brand-mark-sm { width: 36px; height: 36px; font-size: 0.85rem; border-radius: var(--radius-sm); }
+
+.brand-title { font-size: 1.05rem; margin: 0; line-height: 1.3; }
+.brand-subtitle { margin: 0.1rem 0 0; font-size: 0.78rem; color: var(--color-muted); }
+
+.login-tabs-hint {
+  margin: 0 0 0.5rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.login-tabs {
+  display: flex;
+  background: var(--color-bg);
+  border-radius: var(--radius-pill);
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+  gap: 0.25rem;
+  border: 1.5px solid var(--color-border-soft);
+}
+
+.login-tab-desc {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  color: var(--color-indigo-text);
+  background: var(--color-indigo-soft);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+
+.login-tabs .tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 0.55rem 0.5rem;
+  cursor: pointer;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.login-tabs .tab.active {
+  color: white;
+  background: var(--gradient-accent);
+  box-shadow: var(--shadow-glow);
+  transform: scale(1.02);
+}
+
+.login-form { display: flex; flex-direction: column; gap: 1.1rem; }
+
+.login-form label {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  font-size: 0.85rem; font-weight: 600; color: var(--color-text);
+}
+
+.login-error {
+  color: var(--color-danger);
+  background: var(--color-danger-soft);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.8rem;
+  text-align: center;
+  margin-top: 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ---------------------------------------------------------
+   Inputs & buttons
+   --------------------------------------------------------- */
+
+input, select, textarea {
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-family: inherit;
+  background: var(--color-card);
+  color: var(--color-text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-indigo);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+button { font-family: inherit; }
+
+.btn-primary {
+  background: var(--gradient-accent);
+  color: white;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-glow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+.btn-primary:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+.btn-block { width: 100%; }
+
+.btn-secondary {
+  background: var(--color-card);
+  color: var(--color-indigo-text);
+  border: 1.5px solid var(--color-indigo-soft);
+  padding: 0.55rem 1.05rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.btn-secondary:hover { background: var(--color-indigo-soft); border-color: var(--color-indigo); }
+
+.btn-danger {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.95rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+.btn-danger:hover { background: #ffd4db; }
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0;
+  text-align: left;
+}
+.btn-link:hover { color: var(--color-danger); }
+
+/* ---------------------------------------------------------
+   Demo banner (ใช้เฉพาะใน demo.html)
+   --------------------------------------------------------- */
+
+.demo-banner {
+  background: var(--gradient-accent);
+  color: white;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+}
+.demo-banner a { color: white; text-decoration: underline; font-weight: 700; }
+
+/* ---------------------------------------------------------
+   App shell: sidebar + main column
+   --------------------------------------------------------- */
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 248px;
+  flex-shrink: 0;
+  background: var(--color-card);
+  border-right: 1px solid var(--color-border-soft);
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar-brand { display: flex; align-items: center; gap: 0.65rem; padding: 0.4rem 0.5rem 1.5rem; }
+.brand-text { font-weight: 700; font-size: 0.95rem; color: var(--color-text-strong); }
+
+.sidebar-nav { display: flex; flex-direction: column; gap: 0.3rem; flex: 1; }
+
+.sidebar-nav .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.65rem 0.85rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.87rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sidebar-nav .nav-item:hover { background: var(--color-bg); color: var(--color-text); }
+
+.sidebar-nav .nav-item.active {
+  background: var(--gradient-accent);
+  color: white;
+  font-weight: 600;
+  box-shadow: var(--shadow-glow);
+}
+
+.nav-icon {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+.nav-item.active .nav-icon { opacity: 1; }
+
+.sidebar-footer { padding-top: 1rem; border-top: 1px solid var(--color-border-soft); }
+
+.user-chip { display: flex; align-items: center; gap: 0.65rem; padding: 0.4rem 0.5rem; }
+
+.user-avatar {
+  width: 38px; height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--color-indigo-soft);
+  color: var(--color-indigo-text);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.user-meta { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.user-name { font-size: 0.83rem; font-weight: 600; color: var(--color-text-strong); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.main-col { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+.topbar {
+  padding: 1.1rem 2rem;
+  background: var(--color-bg);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.topbar-row { display: flex; align-items: center; justify-content: space-between; }
+
+.topbar-page { font-size: 1.15rem; font-weight: 700; color: var(--color-text-strong); }
+.topbar-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+/* ใช้งานกับเครื่อง PC อย่างเดียว: ให้เนื้อหาเต็มความกว้างหน้าจอเสมอ ไม่จำกัด max-width */
+.topbar-inner, .content-inner { width: 100%; }
+
+.content { flex: 1; padding: 0 2rem 2.5rem; overflow-x: auto; }
+
+/* ---------------------------------------------------------
+   Bento Grid cards
+   --------------------------------------------------------- */
+
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-md);
+}
+
+.card h3 { margin-top: 0; margin-bottom: 1rem; font-size: 1rem; }
+.card h4 { margin-top: 0; margin-bottom: 0.6rem; font-size: 0.92rem; }
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.1rem;
+  margin-bottom: 1.25rem;
+}
+
+.bento-stat {
+  background: var(--color-card);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem 1.5rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-stat::before {
+  content: "";
+  position: absolute;
+  top: -40%; right: -20%;
+  width: 140px; height: 140px;
+  background: var(--gradient-accent);
+  opacity: 0.08;
+  border-radius: 50%;
+}
+
+.bento-stat .stat-label { font-size: 0.8rem; color: var(--color-muted); font-weight: 600; margin-bottom: 0.4rem; }
+.bento-stat .stat-value { font-size: 1.9rem; font-weight: 700; color: var(--color-text-strong); line-height: 1.1; }
+.bento-stat .stat-sub { font-size: 0.78rem; color: var(--color-muted-soft); margin-top: 0.3rem; }
+
+.bento-stat.accent {
+  background: var(--gradient-accent);
+}
+.bento-stat.accent::before { display: none; }
+.bento-stat.accent .stat-label { color: rgba(255,255,255,0.85); }
+.bento-stat.accent .stat-value { color: white; }
+.bento-stat.accent .stat-sub { color: rgba(255,255,255,0.75); }
+
+/* ---------------------------------------------------------
+   Tables
+   --------------------------------------------------------- */
+
+table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+
+th, td {
+  padding: 0.75rem 0.8rem;
+  border-bottom: 1px solid var(--color-border-soft);
+  text-align: left;
+}
+
+th {
+  background: transparent;
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+tbody tr { transition: background 0.12s ease; }
+tbody tr:hover { background: var(--color-bg); }
+tbody tr:last-child td { border-bottom: none; }
+
+/* ---------------------------------------------------------
+   Badges
+   --------------------------------------------------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+.badge-success { background: var(--color-success-soft); color: var(--color-success); }
+.badge-muted { background: #f1f5f9; color: var(--color-muted); }
+.badge-danger { background: var(--color-danger-soft); color: var(--color-danger); }
+.badge-indigo { background: var(--color-indigo-soft); color: var(--color-indigo-text); }
+.badge-warning { background: var(--color-warning-soft); color: var(--color-warning); }
+
+/* ---------------------------------------------------------
+   Forms & toolbars
+   --------------------------------------------------------- */
+
+.toolbar { display: flex; gap: 0.6rem; margin-bottom: 1rem; flex-wrap: wrap; align-items: center; }
+
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.1rem; }
+.form-grid label { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.85rem; font-weight: 600; color: var(--color-text); }
+
+.muted { color: var(--color-muted); font-size: 0.85rem; }
+.error-text { color: var(--color-danger); font-size: 0.85rem; font-weight: 600; }
+.success-text { color: var(--color-success); font-size: 0.85rem; font-weight: 600; }
+
+.score-input { width: 72px; text-align: center; font-weight: 600; }
+
+.locked-note {
+  background: var(--color-warning-soft);
+  border: 1px solid #fde68a;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  margin-bottom: 1.1rem;
+  color: #92400e;
+  font-weight: 500;
+}
+
+/* ---------------------------------------------------------
+   Scrollbar polish
+   --------------------------------------------------------- */
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: var(--radius-pill); }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ---------------------------------------------------------
+   Responsive — ออกแบบสำหรับเครื่อง PC เท่านั้น (ไม่รองรับมือถือ/แท็บเล็ต)
+   เนื้อหาเต็มความกว้างหน้าจอเสมอ ปรับเฉพาะรายละเอียดย่อยตามขนาดจอ PC
+   --------------------------------------------------------- */
+
+/* จอ PC ขนาดใหญ่ / อัลตร้าไวด์ (1600px+): ขยาย sidebar และระยะห่างของ bento grid
+   เพื่อไม่ให้การ์ดดูเล็ก/โล่งเกินไปเมื่อเนื้อหากางเต็มจอ */
+@media (min-width: 1600px) {
+  .sidebar { width: 272px; }
+  .bento-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+  .content { padding: 0 3rem 2.5rem; }
+  .topbar { padding: 1.1rem 3rem; }
+}
+
+/* จอ PC ทั่วไป (1280–1599px): ใช้ค่าพื้นฐานตามที่ตั้งไว้ (sidebar 248px) */
+
+/* จอ PC/โน้ตบุ๊กขนาดเล็กกว่า (ต่ำกว่า 1280px): ลดระยะขอบและความกว้าง sidebar ลงเล็กน้อยเพื่อประหยัดพื้นที่
+   โดยยังคงเป็น sidebar แนวตั้งเสมอ (ไม่สลับเป็นแถบแนวนอนแบบมือถือ) */
+@media (max-width: 1279px) {
+  .sidebar { width: 216px; }
+  .content { padding: 0 1.5rem 2rem; }
+  .topbar { padding: 1rem 1.5rem; }
+}
